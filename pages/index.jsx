@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react';
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
-import Link from 'next/link';
 import Hero from '../components/home/Hero';
 import Cta from '../components/home/Cta';
 

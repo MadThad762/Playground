@@ -4,15 +4,55 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { UserIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar({ username, avatar_url, email }) {
+export default function Navbar() {
   const supabase = useSupabaseClient();
   const session = useSession();
+  const user = useUser();
+  const [username, setUsername] = useState(null);
+  const [avatarUrl, setAvatarUrl] = useState(null);
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+
+  useEffect(() => {
+    user && getProfile();
+  }, [user, session]);
+
+  async function getProfile() {
+    try {
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username, website, avatar_url, first_name, last_name`)
+        .eq('id', user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setUsername(data?.username);
+        setAvatarUrl(data?.avatar_url);
+        setFirstName(data?.first_name);
+        setLastName(data?.last_name);
+      }
+    } catch (error) {
+      alert('Error loading user data in nav!');
+      console.log(error);
+    }
+  }
+
   return (
     <Disclosure as='nav' className='bg-[#1c1c1c]'>
       {({ open }) => (
@@ -38,16 +78,10 @@ export default function Navbar({ username, avatar_url, email }) {
                       Home
                     </Link>
                     <Link
-                      href='/for-sale'
+                      href='/properties'
                       className='text-md rounded-md px-3 py-2 font-bold text-brand-300 duration-300 ease-in-out hover:scale-125 hover:text-white'
                     >
-                      For Sale
-                    </Link>
-                    <Link
-                      href='/for-lease'
-                      className='text-md rounded-md px-3 py-2 font-bold text-brand-300 duration-300 ease-in-out hover:scale-125 hover:text-white'
-                    >
-                      For Lease
+                      Properties
                     </Link>
                     <Link
                       href='/smoothies'
@@ -111,14 +145,16 @@ export default function Navbar({ username, avatar_url, email }) {
                     <Menu as='div' className='relative flex-shrink-0'>
                       <div>
                         <Menu.Button className='flex rounded-full border-0 p-0 text-sm'>
-                          {avatar_url !== null ? (
-                            <img
-                              className='h-10 w-10 rounded-full'
-                              src={avatar_url}
+                          {avatarUrl !== null ? (
+                            <Image
+                              className='h-10 w-10 rounded-md object-cover'
+                              src={`https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/avatars/${avatarUrl}?width=150`}
                               alt='profile picture'
+                              width={150}
+                              height={150}
                             />
                           ) : (
-                            <UserIcon className='h-10 w-10 rounded-full bg-brand-400 p-1 text-brand-800' />
+                            <UserIcon className='h-10 w-10 rounded-md bg-brand-400 p-1 text-brand-800' />
                           )}
                         </Menu.Button>
                       </div>
@@ -131,14 +167,22 @@ export default function Navbar({ username, avatar_url, email }) {
                         leaveFrom='transform opacity-100 scale-100'
                         leaveTo='transform opacity-0 scale-95'
                       >
-                        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                        <Menu.Items className='absolute right-0 z-10 mt-2 w-72 origin-top-right rounded-md bg-brand-700 text-brand-300 shadow-lg ring-2 ring-brand-500 focus:outline-none'>
+                          <div className='flex flex-col justify-between space-y-2 border-b-2 border-brand-500 py-4 px-4'>
+                            <p className='text-xl font-medium'>
+                              {firstName + ' ' + lastName}
+                            </p>
+                            <p className='text-sm'>{user?.email}</p>
+                          </div>
                           <Menu.Item>
                             {({ active }) => (
                               <Link
                                 href='/profile'
                                 className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700',
+                                  active
+                                    ? 'bg-brand-1200 text-brand-200'
+                                    : 'text-brand-300',
+                                  'block px-4 py-3 text-sm font-medium duration-300 ease-in-out',
                                 )}
                               >
                                 Your Profile
@@ -150,8 +194,10 @@ export default function Navbar({ username, avatar_url, email }) {
                               <a
                                 href='#'
                                 className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700',
+                                  active
+                                    ? 'bg-brand-1200 text-brand-200'
+                                    : 'text-brand-300',
+                                  'block px-4 py-3 text-sm font-medium duration-300 ease-in-out',
                                 )}
                               >
                                 Settings
@@ -163,8 +209,10 @@ export default function Navbar({ username, avatar_url, email }) {
                               <button
                                 onClick={() => supabase.auth.signOut()}
                                 className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block border-0 bg-transparent px-4 py-2 text-left text-sm text-gray-700',
+                                  active
+                                    ? 'bg-brand-1200 text-brand-200'
+                                    : ' text-brand-300',
+                                  'block w-full rounded-b-md border-0 px-4 py-3 text-left text-sm font-medium duration-300 ease-in-out',
                                 )}
                               >
                                 Sign out
@@ -202,17 +250,10 @@ export default function Navbar({ username, avatar_url, email }) {
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'
-                href='/for-sale'
+                href='/properties'
                 className='block rounded-md px-3 py-2 text-base font-medium text-brand-300 hover:bg-gray-700 hover:text-white'
               >
-                For Sale
-              </Disclosure.Button>
-              <Disclosure.Button
-                as='a'
-                href='/for-lease'
-                className='block rounded-md px-3 py-2 text-base font-medium text-brand-300 hover:bg-gray-700 hover:text-white'
-              >
-                For Lease
+                Properties
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'
@@ -239,22 +280,24 @@ export default function Navbar({ username, avatar_url, email }) {
             <div className='border-t border-gray-700 pt-4 pb-3'>
               <div className='flex items-center px-5'>
                 <div className='flex-shrink-0'>
-                  {avatar_url !== null ? (
-                    <img
-                      className='h-10 w-10 rounded-full'
-                      src={avatar_url}
+                  {session && avatarUrl !== null ? (
+                    <Image
+                      className='h-10 w-10 rounded-md object-cover'
+                      src={`https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/avatars/${avatarUrl}?width=150`}
                       alt='profile picture'
+                      width={150}
+                      height={150}
                     />
                   ) : (
-                    <UserIcon className='h-10 w-10 text-[#bbbbbb]' />
+                    <UserIcon className='h-10 w-10 rounded-md bg-brand-400 p-1 text-brand-800' />
                   )}
                 </div>
                 <div className='ml-3'>
                   <div className='text-base font-medium text-white'>
-                    {username}
+                    {firstName + ' ' + lastName}
                   </div>
                   <div className='text-sm font-medium text-gray-400'>
-                    {email}
+                    {user?.email}
                   </div>
                 </div>
                 <button

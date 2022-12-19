@@ -10,6 +10,10 @@ module.exports = {
         protocol: 'https',
         hostname: '**/nkbmdolpygrwxgurnjuz.supabase.co/**',
       },
+      {
+        protocol: 'https',
+        hostname: '**/images.unsplash.com/**',
+      },
     ],
   },
 };

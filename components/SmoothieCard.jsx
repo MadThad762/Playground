@@ -32,9 +32,10 @@ export default function SmoothieCard({ smoothie, onDelete }) {
       <a href={smoothie?.image} target={'_blank'}>
         <div className='ob aspect-w-16 aspect-h-9 w-full overflow-hidden rounded-lg bg-gray-200'>
           <Image
-            alt=''
+            alt='smoothie image'
             src={smoothie.imageUrl}
-            fill={true}
+            width={500}
+            height={500}
             className={cn(
               'cursor-pointer object-cover duration-500 ease-in-out hover:opacity-75',
               isLoading

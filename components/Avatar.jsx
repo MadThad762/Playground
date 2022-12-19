@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 
-export default function Avatar({ uid, url, size, onUpload }) {
+export default function Avatar({
+  uid,
+  url,
+  size,
+  onUpload,
+  avatarUrl,
+  setAvatarUrl,
+}) {
   const supabase = useSupabaseClient();
-  const [avatarUrl, setAvatarUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
@@ -59,7 +65,7 @@ export default function Avatar({ uid, url, size, onUpload }) {
         <img
           src={avatarUrl}
           alt='Avatar'
-          className='avatar image'
+          className='rounded-md object-cover'
           style={{ height: size, width: size }}
         />
       ) : (
