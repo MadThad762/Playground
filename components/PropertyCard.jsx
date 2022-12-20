@@ -21,14 +21,14 @@ export default function PropertyCard({ listing }) {
               width={500}
               height={500}
               className={classes(
-                'cursor-pointer object-cover duration-500 ease-in-out hover:opacity-75',
+                'cursor-pointer object-cover duration-500 ease-in-out',
                 isLoading
                   ? 'scale-110 blur-2xl grayscale'
                   : 'scale-100 blur-0 grayscale-0',
               )}
               onLoadingComplete={() => setLoading(false)}
             />
-            <div className='absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center bg-brand-800 opacity-0 duration-300 ease-in-out group-hover:opacity-50'>
+            <div className='absolute top-0 left-0 hidden h-full w-full flex-col items-center justify-center bg-brand-800 opacity-0 duration-300 ease-in-out group-hover:opacity-50 sm:flex'>
               <span className='text-3xl'>See Details</span>
             </div>
           </div>
