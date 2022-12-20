@@ -29,7 +29,7 @@ export default function SmoothieCard({ smoothie, onDelete }) {
 
   return (
     <div className='smoothie-card w-100 relative rounded-md bg-brand-600 p-3 text-brand-300'>
-      <a href={smoothie?.image} target={'_blank'}>
+      <a href={smoothie?.image} target={'_blank'} rel='noreferrer'>
         <div className='ob aspect-w-16 aspect-h-9 w-full overflow-hidden rounded-lg bg-gray-200'>
           <Image
             alt='smoothie image'

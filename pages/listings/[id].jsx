@@ -52,8 +52,11 @@ export default function ListingDetails() {
       </div>
       <div className='h-72 overflow-hidden object-cover sm:h-96 sm:rounded-md md:h-[500px] lg:hidden'>
         <Slider {...settings}>
-          {listing?.images.map((image) => (
-            <div className='oject-cover h-72 object-center sm:h-96 md:h-[500px] lg:hidden'>
+          {listing?.images.map((image, idx) => (
+            <div
+              key={idx}
+              className='oject-cover h-72 object-center sm:h-96 md:h-[500px] lg:hidden'
+            >
               <Link href={baseUrl + image} target={'_blank'}>
                 <img
                   className='lg:h-hidden h-72 w-screen object-cover object-center sm:h-96 sm:w-[calc(100vw-24px)] md:h-[500px]'
@@ -80,8 +83,8 @@ export default function ListingDetails() {
           </Link>
         </div>
         <div className='grid w-1/2 grid-cols-2 gap-3 lg:h-[450px] xl:h-[600px]'>
-          {listing?.images.slice(1).map((image) => (
-            <div className='oject-cover relative h-1/2 object-center'>
+          {listing?.images.slice(1).map((image, idx) => (
+            <div key={idx} className='oject-cover relative h-1/2 object-center'>
               <Link href={baseUrl + image} target={'_blank'}>
                 <img
                   className='w-screen rounded-md object-cover object-center lg:h-[219px] xl:h-[294px]'

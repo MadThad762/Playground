@@ -112,10 +112,10 @@ export default function Hero() {
               </span>
             </h1>
             <p className='mx-auto mt-3 max-w-md text-lg text-brand-300 sm:text-xl md:mt-5 md:max-w-3xl'>
-              Whether you're looking to rent, buy, or just get away for the
-              weekend, we've got you covered! With luxury properties oceanside
-              and in the heart downtown Miami, your Florida oasis is just a few
-              clicks away!
+              Whether you&apos;re looking to rent, buy, or just get away for the
+              weekend, we&apos;ve got you covered! With luxury properties
+              oceanside and in the heart downtown Miami, your Florida oasis is
+              just a few clicks away!
             </p>
             <div className='mt-10 sm:flex sm:justify-center lg:justify-start'>
               <div className='rounded-md shadow'>
