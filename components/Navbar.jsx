@@ -78,10 +78,10 @@ export default function Navbar() {
                       Home
                     </Link>
                     <Link
-                      href='/properties'
+                      href='/listings'
                       className='text-md rounded-md px-3 py-2 font-bold text-brand-300 duration-300 ease-in-out hover:scale-125 hover:text-white'
                     >
-                      Properties
+                      Listings
                     </Link>
                     <Link
                       href='/smoothies'
@@ -250,10 +250,10 @@ export default function Navbar() {
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'
-                href='/properties'
+                href='/listings'
                 className='block rounded-md px-3 py-2 text-base font-medium text-brand-300 hover:bg-gray-700 hover:text-white'
               >
-                Properties
+                Listings
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'

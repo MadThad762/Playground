@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function PropertyCard() {
+export default function PropertyCard({ listing }) {
   const [isLoading, setLoading] = useState(true);
 
   function classes(...classes) {
@@ -10,14 +10,14 @@ export default function PropertyCard() {
   }
   return (
     <>
-      <Link href={'/'} target={'_blank'}>
+      <Link href={`/listings/${listing?.id}`}>
         <div className='w-100 group rounded-b-md bg-brand-600 text-brand-300'>
           <div className='aspect-w-3 aspect-h-2 relative w-full overflow-hidden rounded-t-md bg-gray-200'>
             <Image
               alt=''
-              src={
-                'https://images.unsplash.com/photo-1597285112431-115a1f48bde2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80'
-              }
+              src={`
+                https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/${listing?.images[0]}
+              `}
               width={500}
               height={500}
               className={classes(
@@ -33,19 +33,30 @@ export default function PropertyCard() {
             </div>
           </div>
 
-          <div className='px-5 py-5'>
+          <div className='px-4 py-3'>
             <h3 className='text-2xl font-semibold text-brand-200'>
-              {'$600,000'}
+              ${listing?.price.toLocaleString('en-US')}{' '}
+              <span className='text-lg text-brand-300'>
+                {listing?.listing_type === 'Day to Day' && 'Per Night'}
+              </span>
             </h3>
             <div>
-              <span className='text mr-1.5 font-bold'>6</span>
+              <span className='text mr-1.5 font-bold'>
+                {listing?.number_of_beds}
+              </span>
               <span className='mr-5'>bed</span>
-              <span className='mr-1.5 font-bold'>3</span>
+              <span className='mr-1.5 font-bold'>
+                {listing?.number_of_baths}
+              </span>
               <span className='mr-5'>bath</span>
-              <span className='mr-1.5 font-bold'>2400</span>
+              <span className='mr-1.5 font-bold'>
+                {listing?.square_footage.toLocaleString('en-US')}
+              </span>
               <span className='mr-5'>sqft</span>
             </div>
-            <p className='text-lg font-semibold'>Miami Florida</p>
+            <span className='text-lg font-semibold text-brand-300'>
+              {listing?.address}
+            </span>
           </div>
         </div>
       </Link>
