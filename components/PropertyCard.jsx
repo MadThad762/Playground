@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react';
 
 export default function PropertyCard({ listing }) {
   const [isLoading, setLoading] = useState(true);
+  const baseUrl =
+    'https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/';
 
   function classes(...classes) {
     return classes.filter(Boolean).join(' ');
   }
+
   return (
     <>
       <Link href={`/listings/${listing?.id}`}>
@@ -15,9 +18,7 @@ export default function PropertyCard({ listing }) {
           <div className='aspect-w-3 aspect-h-2 relative w-full overflow-hidden rounded-t-md'>
             <Image
               alt={listing?.title}
-              src={`
-                https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/${listing.images[1]}
-              `}
+              src={baseUrl + listing.images[0]}
               width={500}
               height={500}
               className={classes(

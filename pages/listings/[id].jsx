@@ -38,13 +38,14 @@ export default function ListingDetails() {
         setListing(null);
       }
       if (data) {
-        console.log(data);
         setListing(data);
       }
     };
 
     fetchListing();
   }, [id]);
+
+  console.log(listing?.images);
   return (
     <div className='mx-auto max-w-screen-2xl px-0 sm:px-6 lg:px-8'>
       <div className='mt-3 mb-3 px-4 text-3xl font-semibold text-brand-200 sm:px-0'>
@@ -74,7 +75,7 @@ export default function ListingDetails() {
           <Link href={baseUrl + listing?.images[0]} target={'_blank'}>
             <Image
               className='w-full rounded-md object-cover object-center lg:h-[450px] xl:h-[600px]'
-              src={baseUrl + listing.images[0]}
+              src={baseUrl + listing?.images[0]}
               alt={listing?.title}
               fill={true}
             />
