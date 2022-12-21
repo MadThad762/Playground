@@ -10,7 +10,7 @@ export default function SignIn() {
 
   const navigateToHome = () => {
     {
-      router.push('/');
+      router.back();
     }
   };
 
