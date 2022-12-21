@@ -45,7 +45,6 @@ export default function ListingDetails() {
     fetchListing();
   }, [id]);
 
-  console.log(listing?.images);
   return (
     <div className='mx-auto max-w-screen-2xl px-0 sm:px-6 lg:px-8'>
       <div className='mt-3 mb-3 px-4 text-3xl font-semibold text-brand-200 sm:px-0'>
@@ -73,12 +72,14 @@ export default function ListingDetails() {
       <div className='hidden lg:flex lg:h-[450px] lg:flex-row xl:h-[600px]'>
         <div className='relative mr-3 w-1/2 lg:h-[450px] xl:h-[600px]'>
           <Link href={baseUrl + listing?.images[0]} target={'_blank'}>
-            <Image
-              className='w-full rounded-md object-cover object-center lg:h-[450px] xl:h-[600px]'
-              src={baseUrl + listing?.images[0]}
-              alt={listing?.title}
-              fill={true}
-            />
+            {listing?.images[0] && (
+              <Image
+                className='w-full rounded-md object-cover object-center lg:h-[450px] xl:h-[600px]'
+                src={baseUrl + listing?.images[0]}
+                alt={listing?.title}
+                fill={true}
+              />
+            )}
             <div className='absolute top-0 left-0 flex w-full cursor-pointer flex-row items-start justify-end rounded-md bg-brand-800 opacity-0 hover:opacity-50 lg:h-[450px] xl:h-[600px]'>
               <span className='material-symbols-outlined pr-3 pt-3 text-4xl text-brand-200'>
                 open_in_new
