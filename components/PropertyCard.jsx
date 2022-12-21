@@ -12,11 +12,11 @@ export default function PropertyCard({ listing }) {
     <>
       <Link href={`/listings/${listing?.id}`}>
         <div className='w-100 group rounded-b-md bg-brand-600 text-brand-300'>
-          <div className='aspect-w-3 aspect-h-2 relative w-full overflow-hidden rounded-t-md bg-gray-200'>
+          <div className='aspect-w-3 aspect-h-2 relative w-full overflow-hidden rounded-t-md'>
             <Image
               alt={listing?.title}
               src={`
-                https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/${listing?.images[0]}
+                https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/${listing.images[0]}
               `}
               width={500}
               height={500}
