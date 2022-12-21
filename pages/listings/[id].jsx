@@ -74,7 +74,7 @@ export default function ListingDetails() {
           <Link href={baseUrl + listing?.images[0]} target={'_blank'}>
             <Image
               className='w-full rounded-md object-cover object-center lg:h-[450px] xl:h-[600px]'
-              src={baseUrl + listing?.images[0]}
+              src={baseUrl + listing.images[0]}
               alt={listing?.title}
               fill={true}
             />
