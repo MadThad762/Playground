@@ -14,7 +14,7 @@ export default function PropertyCard({ listing }) {
         <div className='w-100 group rounded-b-md bg-brand-600 text-brand-300'>
           <div className='aspect-w-3 aspect-h-2 relative w-full overflow-hidden rounded-t-md bg-gray-200'>
             <Image
-              alt=''
+              alt={listing?.title}
               src={`
                 https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/${listing?.images[0]}
               `}
