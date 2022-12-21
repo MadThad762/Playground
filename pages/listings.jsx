@@ -1,6 +1,6 @@
 import supabaseAdmin from '../utils/SupabaseAdmin';
 import PropertyCard from '../components/PropertyCard';
-import ListingHeading from '../components/Listings/ListingHeader';
+import ListingHeading from '../components/listings/ListingHeader';
 import { useState, useEffect } from 'react';
 
 export async function getStaticProps() {
@@ -26,7 +26,7 @@ export default function Listings({ listings }) {
   }, [selectedCategory]);
 
   return (
-    <div className='mx-auto max-w-screen-2xl py-3 px-4 sm:px-6 lg:px-8'>
+    <div className='mx-auto max-w-screen-2xl py-10 px-4 sm:px-6 lg:px-8'>
       <ListingHeading
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
