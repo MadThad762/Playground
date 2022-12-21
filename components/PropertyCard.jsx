@@ -16,7 +16,7 @@ export default function PropertyCard({ listing }) {
             <Image
               alt={listing?.title}
               src={`
-                https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/${listing.images[0]}
+                https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/${listing.images[1]}
               `}
               width={500}
               height={500}
