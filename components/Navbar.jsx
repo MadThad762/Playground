@@ -54,7 +54,7 @@ export default function Navbar() {
   }
 
   return (
-    <Disclosure as='nav' className='bg-[#1c1c1c]'>
+    <Disclosure as='nav' className=''>
       {({ open }) => (
         <>
           <div className='mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8'>
@@ -128,7 +128,7 @@ export default function Navbar() {
               </div>
               <div className='flex lg:hidden'>
                 {/* Mobile menu button */}
-                <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+                <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-brand-300 focus:outline-none focus:ring-0 focus:ring-inset focus:ring-brand-800'>
                   <span className='sr-only'>Open main menu</span>
                   {open ? (
                     <XMarkIcon className='block h-6 w-6' aria-hidden='true' />
@@ -239,48 +239,56 @@ export default function Navbar() {
           </div>
 
           <Disclosure.Panel className='lg:hidden'>
-            <div className='space-y-1 px-2 pt-2 pb-3'>
+            <div className='flex flex-col items-center space-y-2.5 px-2 pt-2 pb-3'>
               {/* Current: "bg-gray-900 text-white", Default: "text-brand-300 hover:bg-gray-700 hover:text-white" */}
               <Disclosure.Button
                 as='a'
                 href='/'
-                className='block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white'
+                className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
               >
                 Home
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'
                 href='/listings'
-                className='block rounded-md px-3 py-2 text-base font-medium text-brand-300 hover:bg-gray-700 hover:text-white'
+                className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
               >
                 Listings
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'
                 href='/smoothies'
-                className='block rounded-md px-3 py-2 text-base font-medium text-brand-300 hover:bg-gray-700 hover:text-white'
+                className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
               >
                 Smoothies
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'
                 href='/create'
-                className='block rounded-md px-3 py-2 text-base font-medium text-brand-300 hover:bg-gray-700 hover:text-white'
+                className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
               >
                 Create Smoothie
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'
                 href='/contact'
-                className='block rounded-md px-3 py-2 text-base font-medium text-brand-300 hover:bg-gray-700 hover:text-white'
+                className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
               >
                 Smoothies
               </Disclosure.Button>
             </div>
-            <div className='border-t border-gray-700 pt-4 pb-3'>
-              <div className='flex items-center px-5'>
+            <div className='border-t border-brand-500 pt-4 pb-3'>
+              <div className='flex items-center justify-between px-5'>
+                <div className=''>
+                  <div className='text-lg font-semibold text-white'>
+                    {session ? firstName + ' ' + lastName : ''}
+                  </div>
+                  <div className='text-sm font-medium text-brand-300'>
+                    {session ? user?.email : ''}
+                  </div>
+                </div>
                 <div className='flex-shrink-0'>
-                  {session && avatarUrl !== null ? (
+                  {session && avatarUrl !== null && (
                     <Image
                       className='h-10 w-10 rounded-md object-cover'
                       src={`https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/avatars/${avatarUrl}?width=150`}
@@ -288,49 +296,49 @@ export default function Navbar() {
                       width={150}
                       height={150}
                     />
-                  ) : (
-                    <UserIcon className='h-10 w-10 rounded-md bg-brand-400 p-1 text-brand-800' />
                   )}
                 </div>
-                <div className='ml-3'>
-                  <div className='text-base font-medium text-white'>
-                    {firstName + ' ' + lastName}
-                  </div>
-                  <div className='text-sm font-medium text-gray-400'>
-                    {user?.email}
+              </div>
+              {session && (
+                <div className='mt-3 flex flex-col items-center space-y-2.5 px-2'>
+                  <Disclosure.Button
+                    as='a'
+                    href='/profile'
+                    className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
+                  >
+                    Your Profile
+                  </Disclosure.Button>
+                  <Disclosure.Button
+                    as='a'
+                    href='#'
+                    className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
+                  >
+                    Settings
+                  </Disclosure.Button>
+                  <Disclosure.Button
+                    as='button'
+                    onClick={() => {
+                      supabase.auth.signOut();
+                    }}
+                    className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
+                  >
+                    Sign out
+                  </Disclosure.Button>
+                </div>
+              )}
+              {!session && (
+                <div>
+                  <div className='mt-3 space-y-1 px-2'>
+                    <Disclosure.Button
+                      as='a'
+                      href='/sign-in'
+                      className='flex items-center justify-center rounded-md bg-brand-1200 px-3 py-2 text-base font-semibold text-brand-200 hover:bg-brand-1100'
+                    >
+                      Sign In
+                    </Disclosure.Button>
                   </div>
                 </div>
-                <button
-                  type='button'
-                  className='ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
-                >
-                  <span className='sr-only'>View notifications</span>
-                  <BellIcon className='h-6 w-6' aria-hidden='true' />
-                </button>
-              </div>
-              <div className='mt-3 space-y-1 px-2'>
-                <Disclosure.Button
-                  as='a'
-                  href='/profile'
-                  className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
-                >
-                  Your Profile
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as='a'
-                  href='#'
-                  className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
-                >
-                  Settings
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as='a'
-                  href='#'
-                  className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
-                >
-                  Sign out
-                </Disclosure.Button>
-              </div>
+              )}
             </div>
           </Disclosure.Panel>
         </>
