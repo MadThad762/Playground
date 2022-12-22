@@ -1,6 +1,6 @@
 import supabaseAdmin from '../utils/SupabaseAdmin';
 import PropertyCard from '../components/PropertyCard';
-import ListingHeading from '../components/listings2/ListingHeader';
+import ListingHeading from '../components/listings/ListingHeading';
 import { useState, useEffect } from 'react';
 
 export async function getStaticProps() {
