@@ -48,7 +48,6 @@ export default function Navbar() {
         setLastName(data?.last_name);
       }
     } catch (error) {
-      alert('Error loading user data in nav!');
       console.log(error);
     }
   }

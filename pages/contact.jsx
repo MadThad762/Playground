@@ -82,8 +82,8 @@ export default function Contact() {
             Get in touch
           </h2>
           <p className='mt-4 text-lg leading-6 text-brand-300'>
-            We'd love to hear from you! Please contact us with any questions or
-            concerns. One of our agents will reach out to you.
+            We&apos;d love to hear from you! Please contact us with any
+            questions or concerns. One of our agents will reach out to you.
           </p>
         </div>
         <div className='mt-12'>
@@ -256,7 +256,7 @@ export default function Contact() {
                 type='submit'
                 className='inline-flex w-full items-center justify-center rounded-md border border-transparent bg-brand-1200 px-6 py-3 text-base font-semibold text-brand-200 duration-500 ease-in-out hover:bg-brand-1100 focus:outline-none focus:ring-0 focus:ring-brand-1200'
               >
-                Let's talk
+                Let&apos;s talk
               </button>
             </div>
           </form>
