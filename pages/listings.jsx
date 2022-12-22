@@ -15,6 +15,32 @@ export async function getStaticProps() {
   };
 }
 
+/* const handleDelete = (id) => {
+  setSmoothies((prevSmoothies) => {
+    return prevSmoothies?.filter((sm) => sm?.id !== id);
+  });
+};
+
+useEffect(() => {
+  const fetchSmoothies = async () => {
+    const { data, error } = await supabase
+      .from('recipes')
+      .select('*')
+      .order(orderBy, { ascending: false });
+
+    if (error) {
+      setFetchError('Could not fetch the smoothies');
+      setSmoothies(null);
+    }
+    if (data) {
+      setSmoothies(data);
+      setFetchError(null);
+    }
+  };
+
+  fetchSmoothies();
+}, [orderBy]); */
+
 export default function Listings({ listings }) {
   const [selectedCategory, setSelectedCategory] = useState('For Sale');
   const [sortedListings, setSortedListings] = useState([]);
