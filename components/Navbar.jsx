@@ -292,20 +292,13 @@ export default function Navbar() {
                 </div>
               </div>
               {session && (
-                <div className='mt-3 flex flex-col items-center space-y-2.5 px-2'>
+                <div className='mt-3 flex flex-row items-center justify-between px-2'>
                   <Disclosure.Button
                     as='a'
                     href='/profile'
                     className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
                   >
                     Your Profile
-                  </Disclosure.Button>
-                  <Disclosure.Button
-                    as='a'
-                    href='#'
-                    className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
-                  >
-                    Settings
                   </Disclosure.Button>
                   <Disclosure.Button
                     as='button'
