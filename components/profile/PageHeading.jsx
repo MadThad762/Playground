@@ -64,12 +64,14 @@ export default function PageHeading({ name, avatar_url, user }) {
           <div className='relative flex w-32'>
             <label htmlFor='file-input'>
               <div className='relative h-24 w-24 sm:h-32 sm:w-32'>
-                <Image
-                  className='rounded-md bg-brand-800 object-cover ring-4 ring-brand-800'
-                  src={`https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/avatars/${avatar_url}`}
-                  alt='profile picture'
-                  fill={true}
-                />
+                {avatar_url && (
+                  <Image
+                    className='rounded-md bg-brand-800 object-cover ring-4 ring-brand-800'
+                    src={`https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/avatars/${avatar_url}`}
+                    alt='profile picture'
+                    fill={true}
+                  />
+                )}
               </div>
               <div className='h-24-w-24 absolute top-0 left-0 flex cursor-pointer flex-col items-center justify-center rounded-md bg-brand-800 opacity-0 duration-500 ease-in-out hover:opacity-50 sm:h-32 sm:w-32'>
                 <span className='material-symbols-outlined text-4xl text-brand-200'>
