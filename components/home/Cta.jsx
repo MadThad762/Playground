@@ -7,15 +7,15 @@ export default function Cta() {
       />
       <div className='mx-auto max-w-screen-2xl lg:bg-transparent lg:px-8'>
         <div className='lg:grid lg:grid-cols-12'>
-          <div className='relative z-10 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:bg-transparent lg:py-16'>
+          <div className='relative z-10 bg-brand-700 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:bg-transparent lg:py-16'>
             <div
-              className='absolute inset-x-0 h-1/2 lg:hidden'
+              className='absolute inset-x-0 h-1/2 bg-brand-800 lg:hidden'
               aria-hidden='true'
             />
             <div className='mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:p-0'>
               <div className='aspect-w-10 aspect-h-6 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1'>
                 <img
-                  className='rounded-3xl object-cover object-center shadow-2xl'
+                  className='rounded-md object-cover object-center shadow-2xl'
                   src='https://images.unsplash.com/photo-1636984511212-302c74810f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80'
                   alt=''
                 />
@@ -23,9 +23,9 @@ export default function Cta() {
             </div>
           </div>
 
-          <div className='relative bg-brand-700 lg:col-span-10 lg:col-start-3 lg:row-start-1 lg:grid lg:grid-cols-10 lg:items-center lg:rounded-3xl'>
+          <div className='relative bg-brand-700 lg:col-span-10 lg:col-start-3 lg:row-start-1 lg:grid lg:grid-cols-10 lg:items-center lg:rounded-md'>
             <div
-              className='absolute inset-0 hidden overflow-hidden rounded-3xl lg:block'
+              className='absolute inset-0 hidden overflow-hidden rounded-md lg:block'
               aria-hidden='true'
             >
               <svg
