@@ -22,7 +22,7 @@ export default function ListingDetails() {
     adaptiveHeight: false,
     centerMode: false,
     arrows: false,
-    draggable: false,
+    draggable: true,
     touchMove: true,
     speed: 500,
     slidesToShow: 1,
@@ -56,15 +56,15 @@ export default function ListingDetails() {
       <div className='mt-10 mb-3 px-4 text-3xl font-semibold text-brand-200 sm:px-0'>
         <h2>{listing?.title}</h2>
       </div>
-      <div className='h-72 object-cover sm:h-96 sm:rounded-md md:h-[500px] lg:hidden'>
+      <div className='h-72 object-cover ring-brand-700 focus:ring-0 sm:h-96 sm:rounded-md md:h-[500px] lg:hidden'>
         <Slider {...settings}>
           {listing?.images.map((image, idx) => (
             <div
               key={idx}
-              className='oject-cover relative h-72 object-center sm:h-96 md:h-[500px] lg:hidden'
+              className='oject-cover relative h-72 object-center ring-brand-700 focus:ring-0 sm:h-96 md:h-[500px] lg:hidden'
             >
               <Image
-                className='lg:h-hidden h-72 w-screen object-cover object-center sm:h-96 sm:w-[calc(100vw-24px)] md:h-[500px]'
+                className='lg:h-hidden h-72 w-screen object-cover object-center ring-brand-700 focus:ring-0 sm:h-96 sm:w-[calc(100vw-24px)] md:h-[500px]'
                 src={baseUrl + image}
                 alt={listing?.title}
                 fill={true}
