@@ -175,7 +175,7 @@ export default function Contact() {
                   <select
                     id='country'
                     name='country'
-                    className='h-full rounded-md border-transparent bg-transparent py-0 pl-4 pr-8 text-gray-500 focus:ring-2 focus:ring-brand-1200'
+                    className='h-full rounded-md border-transparent bg-transparent py-0 pl-4 pr-8 focus:ring-2 focus:ring-brand-1200'
                   >
                     <option>US</option>
                     <option>CA</option>
@@ -187,7 +187,7 @@ export default function Contact() {
                   name='phone-number'
                   id='phone-number'
                   autoComplete='tel'
-                  className='block w-full rounded-md border-none bg-brand-600 py-3 px-4 pl-20 focus:ring-2 focus:ring-brand-1200'
+                  className='block w-full rounded-md border-none bg-brand-600 py-3 px-4 pl-20 placeholder:text-brand-300 focus:ring-2 focus:ring-brand-1200'
                   placeholder='+1 (555) 987-6543'
                 />
               </div>
