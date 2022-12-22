@@ -17,10 +17,13 @@ export default function ListingDetails() {
   const [image, setImage] = useState(null);
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     adaptiveHeight: false,
     centerMode: false,
+    arrows: false,
+    draggable: false,
+    touchMove: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -53,7 +56,7 @@ export default function ListingDetails() {
       <div className='mt-10 mb-3 px-4 text-3xl font-semibold text-brand-200 sm:px-0'>
         <h2>{listing?.title}</h2>
       </div>
-      <div className='h-72 overflow-hidden object-cover sm:h-96 sm:rounded-md md:h-[500px] lg:hidden'>
+      <div className='h-72 object-cover sm:h-96 sm:rounded-md md:h-[500px] lg:hidden'>
         <Slider {...settings}>
           {listing?.images.map((image, idx) => (
             <div
@@ -109,7 +112,7 @@ export default function ListingDetails() {
           ))}
         </div>
       </div>
-      <div className='py-3 px-4 text-brand-300 sm:px-0'>
+      <div className='mt-2 py-3 px-4 text-brand-300 sm:px-0'>
         <h3 className='text-2xl font-semibold text-brand-200'>
           ${listing?.price.toLocaleString('en-US')}{' '}
           <span className='text-lg text-brand-300'>

@@ -9,3 +9,11 @@ body {
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 200, 'opsz' 48;
 }
+
+.slick-dots li button::before {
+  @apply text-[8px] text-white opacity-50;
+}
+
+.slick-dots li.slick-active button::before {
+  @apply text-[8px] text-gray-600 opacity-50;
+}

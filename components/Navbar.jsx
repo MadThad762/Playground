@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { UserIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import {
@@ -131,9 +131,15 @@ export default function Navbar() {
                 <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-brand-300 focus:outline-none focus:ring-0 focus:ring-inset focus:ring-brand-800'>
                   <span className='sr-only'>Open main menu</span>
                   {open ? (
-                    <XMarkIcon className='block h-6 w-6' aria-hidden='true' />
+                    <XMarkIcon
+                      className='block h-6 w-6 stroke-2'
+                      aria-hidden='true'
+                    />
                   ) : (
-                    <Bars3Icon className='block h-6 w-6' aria-hidden='true' />
+                    <Bars2Icon
+                      className='block h-6 w-6 stroke-2'
+                      aria-hidden='true'
+                    />
                   )}
                 </Disclosure.Button>
               </div>
