@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Switch } from '@headlessui/react';
+import Head from 'next/head';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -10,6 +11,14 @@ export default function Contact() {
 
   return (
     <div className='flex min-h-[calc(100vh-65px)] flex-col items-center justify-center overflow-hidden py-16 px-4 text-brand-300 sm:px-6 lg:px-8 lg:py-24'>
+      <Head>
+        <title>Contact</title>
+        <meta
+          name='description'
+          content='Your profile is where you can view and edit your information and view your property listings'
+        />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <div className='relative mx-auto max-w-xl'>
         <svg
           className='absolute left-full translate-x-1/2 transform'

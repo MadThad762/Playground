@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className='mx-auto max-w-screen-2xl'>
       <Head>
-        <title>My Profile</title>
+        <title>Miami Luxury Condos</title>
         <meta
           name='description'
           content='Your profile is where you can view and edit your information and view your property listings'

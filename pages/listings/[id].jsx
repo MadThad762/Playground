@@ -15,6 +15,13 @@ export default function ListingDetails() {
     'https://nkbmdolpygrwxgurnjuz.supabase.co/storage/v1/object/public/property-images/';
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [isLoading2, setLoading2] = useState(true);
+  const [isLoading3, setLoading3] = useState(true);
+
+  function classes(...classes) {
+    return classes.filter(Boolean).join(' ');
+  }
 
   const settings = {
     dots: true,
@@ -64,10 +71,16 @@ export default function ListingDetails() {
               className='oject-cover relative h-72 object-center ring-brand-700 focus:ring-0 sm:h-96 md:h-[500px] lg:hidden'
             >
               <Image
-                className='lg:h-hidden h-72 w-screen object-cover object-center ring-brand-700 focus:ring-0 sm:h-96 sm:w-[calc(100vw-24px)] md:h-[500px]'
                 src={baseUrl + image}
                 alt={listing?.title}
                 fill={true}
+                className={classes(
+                  'lg:h-hidden h-72 w-screen object-cover object-center ring-brand-700 focus:ring-0 sm:h-96 sm:w-[calc(100vw-24px)] md:h-[500px]',
+                  isLoading3
+                    ? 'scale-110 blur-2xl grayscale'
+                    : 'scale-100 blur-0 grayscale-0',
+                )}
+                onLoadingComplete={() => setLoading3(false)}
               />
             </div>
           ))}
@@ -83,10 +96,16 @@ export default function ListingDetails() {
           >
             {listing?.images[0] && (
               <Image
-                className='w-full rounded-md object-cover object-center lg:h-[450px] xl:h-[600px]'
                 src={baseUrl + listing?.images[0]}
                 alt={listing?.title}
                 fill={true}
+                className={classes(
+                  'w-full rounded-md object-cover object-center lg:h-[450px] xl:h-[600px]',
+                  isLoading
+                    ? 'scale-110 blur-2xl grayscale'
+                    : 'scale-100 blur-0 grayscale-0',
+                )}
+                onLoadingComplete={() => setLoading(false)}
               />
             )}
             <div className='absolute top-0 left-0 flex w-full cursor-pointer flex-row items-start justify-end rounded-md bg-brand-800 opacity-0 hover:opacity-50 lg:h-[450px] xl:h-[600px]'></div>
@@ -101,10 +120,16 @@ export default function ListingDetails() {
                 }}
               >
                 <Image
-                  className='w-screen rounded-md object-cover object-center lg:h-[219px] xl:h-[294px]'
                   src={baseUrl + image}
                   alt={listing?.title}
                   fill={true}
+                  className={classes(
+                    'w-screen rounded-md object-cover object-center lg:h-[219px] xl:h-[294px]',
+                    isLoading2
+                      ? 'scale-110 blur-2xl grayscale'
+                      : 'scale-100 blur-0 grayscale-0',
+                  )}
+                  onLoadingComplete={() => setLoading2(false)}
                 />
                 <div className='absolute top-0 left-0 flex w-full cursor-pointer flex-row items-start justify-end rounded-md bg-brand-800 opacity-0 hover:opacity-50 lg:h-[219px] xl:h-[294px]'></div>
               </button>

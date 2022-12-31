@@ -2,6 +2,7 @@ import supabaseAdmin from '../utils/SupabaseAdmin';
 import PropertyCard from '../components/PropertyCard';
 import ListingHeading from '../components/listings/ListingHeading';
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 export async function getStaticProps() {
   const { data } = await supabaseAdmin
@@ -53,6 +54,14 @@ export default function Listings({ listings }) {
 
   return (
     <div className='mx-auto max-w-screen-2xl py-10 px-4 sm:px-6 lg:px-8'>
+      <Head>
+        <title>Listings</title>
+        <meta
+          name='description'
+          content='Your profile is where you can view and edit your information and view your property listings'
+        />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <ListingHeading
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}

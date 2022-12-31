@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function ListingHeading({
   selectedCategory,
   setSelectedCategory,
@@ -12,12 +14,12 @@ export default function ListingHeading({
         <h3 className='flex text-3xl font-semibold leading-6 text-brand-200'>
           Listings
         </h3>
-        <button
-          type='button'
+        <Link
+          href={'/create-listing'}
           className='inline-flex items-center rounded-md border border-transparent bg-brand-1200 px-4 py-2 text-sm font-semibold text-brand-100 duration-500 ease-in-out hover:bg-brand-1100 focus:outline-none focus:ring-0'
         >
           Create Listing
-        </button>
+        </Link>
       </div>
       <div className='mt-4'>
         <div className=''>

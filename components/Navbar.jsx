@@ -83,7 +83,7 @@ export default function Navbar() {
                       Listings
                     </Link>
                     <Link
-                      href='/create'
+                      href='/create-listing'
                       className='text-md rounded-md px-3 py-2 font-bold text-brand-300 duration-300 ease-in-out hover:scale-125 hover:text-white'
                     >
                       Create Listing
@@ -256,7 +256,7 @@ export default function Navbar() {
               </Disclosure.Button>
               <Disclosure.Button
                 as='a'
-                href='/create'
+                href='/create-listing'
                 className='block rounded-md px-3 py-2 text-xl font-bold text-brand-300'
               >
                 Create Listing
